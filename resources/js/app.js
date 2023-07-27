@@ -1,0 +1,1 @@
+import.meta.glob(["../assets/**", "../fonts/**"]);
