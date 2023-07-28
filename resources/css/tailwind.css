@@ -49,6 +49,6 @@
     }
 
     .btn--medium{
-        @apply p-1 rounded-[.25rem];
+        @apply p-1 rounded-[.25rem] inline-block;
     }
 }

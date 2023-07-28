@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CampsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 //Landing Page
 Route::get('/', [HomeController::class, 'landing'])->name('home.landing');
+
+Route::resource('camps', CampsController::class);
