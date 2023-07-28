@@ -19,7 +19,7 @@
                         </a>
                     </figure>
                 </li>
-                <li><a href="/" class="btn btn--medium text-neutral-500 hover:text-neutral-900">Home</a></li>
+                <li><a href="{{ route('camps.index') }}" class="btn btn--medium text-neutral-500 hover:text-neutral-900">Home</a></li>
             </ul>
             <ul class=" flex gap-1">
                 <li><a href="/" class="btn btn--medium text-neutral-500 hover:text-neutral-900">Login</a></li>

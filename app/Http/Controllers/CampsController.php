@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Camp;
+use App\Http\Requests\StoreCampRequest;
 
 class CampsController extends Controller
 {
@@ -26,9 +27,14 @@ class CampsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCampRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $camp = Camp::create($validated);
+
+        // return redirect()->route('camps.show', ['camp' => $camp->id]);
+        return redirect()->route('camps.index');
     }
 
     /**

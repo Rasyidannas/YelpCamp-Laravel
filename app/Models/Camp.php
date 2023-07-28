@@ -10,6 +10,6 @@ class Camp extends Model
 {
     use HasFactory;
     use HasUuids;
-    
+
     protected $fillable = ['name', 'price', 'images', 'description'];
 }
