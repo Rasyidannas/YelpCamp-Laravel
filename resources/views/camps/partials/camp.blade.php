@@ -6,5 +6,5 @@
         <h5 class=" text-neutral-900 font-bold mb-1/2">{{ $camp->name }}</h5>
         <p class=" w-11/12">{{ substr($camp->description, 0, 70) }}...</p>
     </div>
-    <a href="{{ $camp->id }}" class="btn btn--medium border w-full text-center rounded hover:bg-black hover:text-white transition-all">View Campground</a>
+    <a href="{{ route('camps.show', ['camp' => $camp->id]) }}" class="btn btn--medium border w-full text-center rounded hover:bg-black hover:text-white transition-all">View Campground</a>
 </div>

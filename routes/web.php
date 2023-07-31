@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CampsController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Camp;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,4 @@ use Illuminate\Support\Facades\Route;
 //Landing Page
 Route::get('/', [HomeController::class, 'landing'])->name('home.landing');
 
-Route::resource('camps', CampsController::class);
+Route::resource('camps', CampsController::class)->only(['index', 'show', 'create', 'store', 'edit', 'update', 'destroy']);

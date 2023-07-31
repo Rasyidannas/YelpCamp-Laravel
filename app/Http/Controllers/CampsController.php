@@ -39,8 +39,8 @@ class CampsController extends Controller
 
         $camp = Camp::create($validated);
 
-        // return redirect()->route('camps.show', ['camp' => $camp->id]);
-        return redirect()->route('camps.index');
+        return redirect()->route('camps.show', ['camp' => $camp->id]);
+        // return redirect()->route('camps.show', ['camp' => $camp->slug]);
     }
 
     /**
@@ -48,7 +48,7 @@ class CampsController extends Controller
      */
     public function show(string $id)
     {
-        // return view('posts.show', ['post' => ]);
+        return view('camps.show', ['camp' => Camp::findOrFail($id)]);
     }
 
     /**
