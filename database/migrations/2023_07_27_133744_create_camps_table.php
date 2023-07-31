@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('price');
             $table->string('images');
             $table->text('description');
+            $table->string('slug');
         });
     }
 

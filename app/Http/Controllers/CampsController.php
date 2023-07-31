@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Camp;
 use App\Http\Requests\StoreCampRequest;
+use Illuminate\Support\Str;
 
 class CampsController extends Controller
 {
@@ -21,7 +22,12 @@ class CampsController extends Controller
      */
     public function create()
     {
+        $camp = new Camp();
+        $slug = Str::slug($camp->name);
         return view('camps.create');
+        
+        // compact() is same destructuring in JS ('camp => $camp, 'slug' => $slug)
+        // return view('camps.create', compact('camp', 'slug'));
     }
 
     /**
@@ -42,7 +48,7 @@ class CampsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // return view('posts.show', ['post' => ]);
     }
 
     /**

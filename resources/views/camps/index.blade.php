@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div class=" flex flex-wrap justify-between">
+    <div class=" flex flex-wrap gap-6 justify-between">
         @forelse ($camps as $camp)
             @include('camps.partials.camp', [])
         @empty
