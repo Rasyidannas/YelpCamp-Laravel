@@ -19,4 +19,6 @@ use App\Models\Camp;
 //Landing Page
 Route::get('/', [HomeController::class, 'landing'])->name('home.landing');
 
-Route::resource('camps', CampsController::class)->only(['index', 'show', 'create', 'store', 'edit', 'update', 'destroy']);
+Route::resource('camps', CampsController::class);
+
+Route::get('camps/{camp:slug}', [CampsController::class, 'show'])->name('camps.show');

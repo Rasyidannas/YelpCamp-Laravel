@@ -25,9 +25,6 @@ class CampsController extends Controller
         $camp = new Camp();
         $slug = Str::slug($camp->name);
         return view('camps.create');
-        
-        // compact() is same destructuring in JS ('camp => $camp, 'slug' => $slug)
-        // return view('camps.create', compact('camp', 'slug'));
     }
 
     /**
@@ -39,16 +36,16 @@ class CampsController extends Controller
 
         $camp = Camp::create($validated);
 
-        return redirect()->route('camps.show', ['camp' => $camp->id]);
-        // return redirect()->route('camps.show', ['camp' => $camp->slug]);
+        // return redirect()->route('camps.index');
+        return redirect()->route('camps.show', ['camp' => $camp->slug]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Camp $camp)
     {
-        return view('camps.show', ['camp' => Camp::findOrFail($id)]);
+        return view('camps.show', ['camp' => $camp]);
     }
 
     /**
