@@ -1,6 +1,6 @@
 <div class="card__camp p-1 border flex flex-col gap-1 justify-between rounded">
     <figure class=" h-44 overflow-hidden rounded">
-        <img src="{{ $camp->images }}" alt="{{ $camp->name }}" class=" relative -top-1">
+        <img src="{{ $camp->images }}" alt="{{ $camp->name }}" class=" relative">
     </figure>
     <div>
         <h5 class=" text-neutral-900 font-bold mb-1/2">{{ $camp->name }}</h5>

@@ -31,7 +31,7 @@
     }
 
     h5{
-        @apply text-heading-4 leading-[1.4rem];
+        @apply text-heading-5 leading-[1.4rem];
     }
 
     p{
