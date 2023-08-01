@@ -56,9 +56,13 @@ class CampsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreCampRequest $request, string $id)
     {
-        //
+        $camp = Camp::findOrFail($id);
+        $validated = $request->validated();
+        $camp->update($validated);
+
+        return redirect()->route('camps.show', ['camp' => $camp->slug]);
     }
 
     /**

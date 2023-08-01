@@ -6,7 +6,7 @@
     <div class=" flex flex-col gap-3 w-7/12 mx-auto">
         <h2 class=" font-bold">Edit {{ $camp->name }}</h2>
         
-        <form action="{{ route('camps.store') }}" method="POST" class="flex flex-col gap-6">
+        <form action="{{ route('camps.update', ['camp' => $camp->id]) }}" method="POST" class="flex flex-col gap-6">
             @csrf
             @method('PUT')
             @include('camps.partials.form')
