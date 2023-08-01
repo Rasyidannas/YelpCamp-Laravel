@@ -3,13 +3,16 @@
 @section('title', $camp->name)
 
 @section('content')
-    <div class="flex justify-between">
-        <div class=" p-2 border rounded h-fit">
+    <div class="flex justify-between gap-6">
+        <div class=" p-2 border rounded border-gray-400 h-fit flex-1">
             <img src="{{ Vite::asset('resources/assets/Map.png') }}" alt="">
         </div>
 
-        <div class=" w-7/12 p-2 border rounded flex flex-col gap-1">
-            <figure>
+        <div class=" w-2/3 p-2 border border-gray-400 rounded flex flex-col gap-1">
+            <figure class="relative">
+                <a href="{{ route('camps.edit', $camp->slug) }}" class=" absolute top-1 right-1 btn--medium bg-white text-btn font-medium flex gap-1/2 items-end">
+                    <img src="{{ Vite::asset('resources/assets/EditIcon.svg') }}" alt="" class=" h-6 w-6"> Edit Camp
+                </a>
                 <img src="{{ $camp->images }}" alt="{{ $camp->name }}" class="rounded">
             </figure>
             <div class="flex items-center justify-between">

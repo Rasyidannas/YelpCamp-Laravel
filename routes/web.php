@@ -22,3 +22,4 @@ Route::get('/', [HomeController::class, 'landing'])->name('home.landing');
 Route::resource('camps', CampsController::class);
 
 Route::get('camps/{camp:slug}', [CampsController::class, 'show'])->name('camps.show');
+Route::get('camps/{camp:slug}/edit', [CampsController::class, 'edit'])->name('camps.edit');

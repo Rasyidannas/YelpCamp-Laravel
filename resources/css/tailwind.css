@@ -52,6 +52,10 @@
         @apply p-1 rounded-[.25rem] inline-block;
     }
 
+    .btn--medium-secondary{
+        @apply border border-gray-400;
+    }
+
     .card__camp{
         flex: 0 0 calc(33% - 1rem);
     }

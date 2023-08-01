@@ -15,16 +15,16 @@
                     <span class="absolute inset-y-0 left-0 flex items-center pl-1">
                       <img src={{ Vite::asset('resources/assets/SearchIcon.svg') }}>
                     </span>
-                    <input class="placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-1 pl-10 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Search for camps" type="text" name="search"/>
+                    <input class="placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-[.25rem] py-1 pl-10 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Search for camps" type="text" name="search"/>
                 </label>
                 <button type="submit" class="btn btn--medium border text-center bg-black text-white w-fit">Search</button>
             </form>
 
-            <a href="{{ route('camps.create') }}" class=" underline text-neutral-500">Or add your own campground</a>
+            <a href="{{ route('camps.create') }}" class=" underline text-neutral-500 transition-all hover:text-black">Or add your own campground</a>
         </div>
     </div>
 
-    <div class=" flex flex-wrap gap-6 justify-between">
+    <div class=" flex flex-wrap gap-6 justify-start">
         @forelse ($camps as $camp)
             @include('camps.partials.camp', [])
         @empty

@@ -25,7 +25,7 @@ class StoreCampRequest extends FormRequest
             'name' => 'bail|required|min:3',
             'images' => 'required',
             'price' => 'required',
-            'description' => 'required|min:10'
+            'description' => 'required|min:50'
         ];
     }
 }

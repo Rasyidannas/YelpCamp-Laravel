@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Camp;
 use App\Http\Requests\StoreCampRequest;
-use Illuminate\Support\Str;
 
 class CampsController extends Controller
 {
@@ -22,8 +21,6 @@ class CampsController extends Controller
      */
     public function create()
     {
-        $camp = new Camp();
-        $slug = Str::slug($camp->name);
         return view('camps.create');
     }
 
@@ -51,9 +48,9 @@ class CampsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Camp $camp)
     {
-        //
+        return view('camps.edit', ['camp' => $camp]);
     }
 
     /**
