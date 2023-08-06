@@ -15,7 +15,6 @@
             <li><a href="{{ route('register') }}" class="btn btn--medium text-white bg-black self-start">Create an account</a></li>
         @else
             {{-- this is when user logined --}}
-            {{-- username --}}
             <li><span class=" btn text-neutral-500">{{ Auth::user()->name }}</span></li> 
             <form action="{{ route('logout') }}" method="POST" id="logout-form" class=" hidden">
                 @csrf

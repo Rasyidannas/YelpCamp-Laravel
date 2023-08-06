@@ -9,6 +9,14 @@ use App\Http\Requests\StoreCampRequest;
 class CampsController extends Controller
 {
     /**
+     * Auhtentication for limit user
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()
