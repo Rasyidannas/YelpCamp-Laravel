@@ -20,7 +20,7 @@
                 </nav>
     
                 <div class="flex flex-col gap-2 pt-20">
-                    <div class=" w-3/4 flex flex-col gap-[1.5rem]">
+                    <div class=" w-4/5 flex flex-col gap-[1.5rem]">
                         <h1 class=" text-neutral-900">Explore the best camps on Earth.</h1>
                         <p>YelpCamp is a curated list of the best camping spots on Earth. Unfiltered and unbiased reviews.</p>
                         <ul class="flex flex-col gap-1/2">
@@ -57,7 +57,7 @@
                 </div>
             </div>
     
-            <figure class=" relative -right-20">
+            <figure class=" relative -right-20 w-2/4">
                 <img src={{ Vite::asset('resources/assets/HeroImage.jpg') }} alt="Yelp Camp">
             </figure>
         </div>

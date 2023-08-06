@@ -23,3 +23,6 @@ Route::resource('camps', CampsController::class);
 
 Route::get('camps/{camp:slug}', [CampsController::class, 'show'])->name('camps.show');
 Route::get('camps/{camp:slug}/edit', [CampsController::class, 'edit'])->name('camps.edit');
+
+// For authentication
+Auth::routes();

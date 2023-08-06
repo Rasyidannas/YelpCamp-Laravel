@@ -10,7 +10,7 @@
 <body>
     <div class="container mb-10">
         {{-- Navigation --}}
-        @include('navs.topnav')
+        @include('navs.topNav')
         {{-- this @yield for place @section when call --}}
         @yield('content')
     </div>
