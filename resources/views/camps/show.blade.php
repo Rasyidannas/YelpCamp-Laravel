@@ -36,11 +36,26 @@
     
             {{-- Comments --}}
             <div class=" p-2 border border-gray-400 rounded flex flex-col gap-2">
-                <h1 class=" text-heading-4">Comments</h1>
+                <div class=" flex flex-col gap-1">
+                    <h1 class=" text-heading-4">Comments</h1>
+                    @forelse ($camp->comments as $comment)
+                        <div class=" flex flex-col gap-1/2">
+                            <div class=" flex justify-between">
+                                <p class=" text-btn text-black font-bold">{{ $comment->user->name }}</p>
+                                <p class=" text-btn">{{ $comment->created_at->diffForHumans() }}</p>
+                            </div>
+                            <p>{{ $comment->content }}</p>
+                        </div>
+                    @empty
+                        <p class=" font-medium text-neutral-500">No Comments yet!</p>
+                    @endforelse
+                </div>
+
+                <div class=" h-[1px] bg-gray-400"></div>
 
                 <div class="flex flex-col gap-1">
                     <h5 class=" text-heading-5 font-semibold">Add New Comment</h5>
-                    <form action="{{ route('camp.comments.store', $camp->id) }}" method="POST" class=" flex flex-col gap-1">
+                    <form action="{{ route('camp.comments.store', $camp) }}" method="POST" class=" flex flex-col gap-1">
                         @csrf
                         <div class=" w-full flex flex-col gap-1/2">
                             <label for="content" class=" text-neutral-500">Description</label>

@@ -22,7 +22,7 @@ class CampsController extends Controller
      */
     public function index()
     {
-        return view('camps.index', ['camps' => Camp::orderBy('created_at', 'desc')->take(5)->get()]);
+        return view('camps.index', ['camps' => Camp::latest()->with('comments')->get()]);
     }
 
     /**

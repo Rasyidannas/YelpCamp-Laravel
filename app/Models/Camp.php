@@ -31,7 +31,7 @@ class Camp extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function comment(): HasMany
+    public function comments(): HasMany
     {
         return $this->hasMany('App\Models\Comment');
     }
