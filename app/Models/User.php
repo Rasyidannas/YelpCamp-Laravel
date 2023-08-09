@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -47,5 +49,10 @@ class User extends Authenticatable
     public function camps(): HasMany
     {
         return $this->hasMany('App\Models\Camp');
+    }
+
+    public function comment(): HasMany
+    {
+        return $this->hasMany('App\Models\Comment');
     }
 }

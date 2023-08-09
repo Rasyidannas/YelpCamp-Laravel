@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'YelpCamp - Camps')
+@section('title', ' Camps')
 
 @section('content')
     <div class=" bg-stone-100 rounded p-10 mb-3">

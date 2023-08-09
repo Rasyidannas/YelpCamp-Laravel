@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Add New Camp')
+@section('title', ' Add New Camp')
 
 @section('content')
     <div class=" flex flex-col gap-3 w-7/12 mx-auto">

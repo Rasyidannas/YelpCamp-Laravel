@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CampsController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Camp;
 
@@ -23,6 +24,10 @@ Route::resource('camps', CampsController::class);
 
 Route::get('camps/{camp:slug}', [CampsController::class, 'show'])->name('camps.show');
 Route::get('camps/{camp:slug}/edit', [CampsController::class, 'edit'])->name('camps.edit');
+
+Route::resource('camp.comments', CommentController::class)->only(['store', 'destroy']);
+// Route::get('comments/create/{camp:slug}', [CommentController::class, 'create'])->name('comments.create');
+// Route::post('comments/{camp:id}', [CommentController::class, 'store'])->name('comments.store');
 
 // For authentication
 Auth::routes();
