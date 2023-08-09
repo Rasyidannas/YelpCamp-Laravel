@@ -28,11 +28,21 @@
                         <form method="POST" action="{{ route('login') }}" class="flex flex-col gap-2">
                             @csrf
                             <x-form.inputText label="Email" name="email" type="text" placeholder="Johndoe@example.com" :model="$camp ?? null"/>
+                            {{-- Password field --}}
                             <div class="flex flex-col gap-1/2">
                                 <label for="password" class="text-neutral-500">Password</label>
-                                <input class="@error('password') border-red-500 @else border-slate-100 @enderror
-                                    placeholder:text-slate-400 block w-full border bg-neutral-100 rounded-[.25rem] py-1 px-1 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-                                    id="password" placeholder="Enter your password" type="password" name="password"/>
+                                <div x-data="{
+                                    passShow: false
+                                }" class=" relative">
+                                    <input class="@error('password') border-red-500 @else border-slate-100 @enderror
+                                        placeholder:text-slate-400 block w-full border bg-neutral-100 rounded-[.25rem] py-1 px-1 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                                        id="password" placeholder="Enter your password" x-bind:type="passShow ? 'text' : 'password' " name="password"/>
+    
+                                    <figure x-on:click="passShow = !passShow; console.log(passShow)" class="absolute top-1/2 right-1 translate-y-[-50%] cursor-pointer">
+                                        <img src={{ Vite::asset('resources/assets/ShowIcon.svg') }} class=" w-[1.5rem] h-[1.5rem]" :class="passShow && 'hidden'" alt="Yelp Camp">
+                                        <img src={{ Vite::asset('resources/assets/HiddenIcon.svg') }} class=" w-[1.5rem] h-[1.5rem]" :class="!passShow && 'hidden'" alt="Yelp Camp">
+                                    </figure>
+                                </div>
                                 @error('password')
                                     <span class=" text-small text-red-500">{{ $message }}</span>
                                 @enderror
