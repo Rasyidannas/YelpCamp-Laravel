@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Camp;
+use App\Models\User;
 use App\Http\Requests\StoreCampRequest;
 
 class CampsController extends Controller
@@ -38,10 +39,11 @@ class CampsController extends Controller
     public function store(StoreCampRequest $request)
     {
         $validated = $request->validated();
+        //add user_id
+        $validated['user_id'] = $request->user()->id;
 
         $camp = Camp::create($validated);
 
-        // return redirect()->route('camps.index');
         return redirect()->route('camps.show', ['camp' => $camp->slug]);
     }
 

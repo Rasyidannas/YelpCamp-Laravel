@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Camp extends Model
 {
@@ -13,7 +14,7 @@ class Camp extends Model
     use HasUuids;
     use Sluggable;
 
-    protected $fillable = ['name', 'price', 'images', 'description'];
+    protected $fillable = ['name', 'price', 'images', 'description', 'user_id'];
 
     public function sluggable(): array
     {
@@ -22,5 +23,10 @@ class Camp extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo('App\Models\User');
     }
 }

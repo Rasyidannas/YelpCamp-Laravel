@@ -30,7 +30,7 @@
                 <h5 class=" font-medium">${{ $camp->price }}/night</h5>
             </div>
             <p>{{ $camp->description }}</p>
-            <p class=" italic">Submitted by Author</p>
+            <p class=" italic">Submitted by {{ $camp->user->name }}</p>
         </div>
     </div>
 @endsection
