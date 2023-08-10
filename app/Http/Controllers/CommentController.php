@@ -11,7 +11,7 @@ class CommentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('show');
+        $this->middleware('auth');
     }
 
     /**
@@ -29,14 +29,6 @@ class CommentController extends Controller
         return redirect()->route('camps.show', $camp);
 
         // return redirect('/');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**
@@ -58,8 +50,12 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Camp $camp, Comment $comment)
     {
-        //
+        $this->authorize('delete', $comment);
+
+        $comment->delete();
+
+        return redirect()->route('camps.show', $camp);
     }
 }

@@ -48,8 +48,12 @@
         @apply text-btn font-bold;
     }
 
+    .btn--small{
+        @apply py-1/2 px-1 rounded inline-block;
+    }
+
     .btn--medium{
-        @apply p-1 rounded-[.25rem] inline-block;
+        @apply p-1 rounded inline-block;
     }
 
     .btn--medium-secondary{

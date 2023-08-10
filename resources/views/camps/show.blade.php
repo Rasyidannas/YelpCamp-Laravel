@@ -24,7 +24,7 @@
                     <a href="{{ route('camps.edit', $camp->slug) }}" class=" absolute top-1 right-1 btn--medium bg-white text-btn font-medium flex gap-1/2 items-end">
                         <img src="{{ Vite::asset('resources/assets/EditIcon.svg') }}" alt="" class=" h-6 w-6"> Edit Camp
                     </a>
-                    <img src="{{ $camp->images }}" alt="{{ $camp->name }}" class="rounded">
+                    <img src="{{ $camp->images }}" alt="{{ $camp->name }}" class="rounded w-full">
                 </figure>
                 <div class="flex items-center justify-between">
                     <h1 class=" text-heading-4">{{ $camp->name }}</h1>
@@ -36,13 +36,35 @@
     
             {{-- Comments --}}
             <div class=" p-2 border border-gray-400 rounded flex flex-col gap-2">
-                <div class=" flex flex-col gap-1">
+                <div class=" flex flex-col gap-6">
                     <h1 class=" text-heading-4">Comments</h1>
                     @forelse ($camp->comments as $comment)
                         <div class=" flex flex-col gap-1/2">
-                            <div class=" flex justify-between">
+                            <div class="relative flex gap-1">
                                 <p class=" text-btn text-black font-bold">{{ $comment->user->name }}</p>
                                 <p class=" text-btn">{{ $comment->created_at->diffForHumans() }}</p>
+                                {{-- Kebab Icon --}}
+                                <div x-data="{ open:false }"
+                                    x-on:click="open = !open"
+                                    class=" ml-auto cursor-pointer group"
+                                    >
+                                    <div class="flex gap-[0.25rem] items-center">
+                                        <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
+                                        <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
+                                        <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
+                                    </div>
+                                    <div class=" absolute right-0 z-50 mt-1/2 py-1/2 bg-white shadow-md rounded flex flex-col" x-show="open">
+                                        <!-- Dropdown button -->
+                                        <a href="/" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Edit</a>
+                                        @can('delete', $comment)
+                                            <form action="{{ route('camp.comments.destroy', [$camp, $comment]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Delete</button>
+                                            </form>
+                                        @endcan
+                                    </div>
+                                </div>
                             </div>
                             <p>{{ $comment->content }}</p>
                         </div>
