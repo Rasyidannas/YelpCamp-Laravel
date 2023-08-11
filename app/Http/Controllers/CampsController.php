@@ -22,11 +22,17 @@ class CampsController extends Controller
      */
     public function index(Request $request)
     {
+        //default with Eager Loading
+        $query = Camp::latest()->with('comments');
+
+        //for search form
         $search = $request->input('search');
         
-        $camps = Camp::when($search, function($query, $search) {
-            return $query->where('name', 'like', '%' . $search . '%');
-        })->simplePaginate(6);
+        if ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        $camps = $query->simplePaginate(6);
 
         return view('camps.index', compact('camps'));
         // return view('camps.index', ['camps' => Camp::latest()->with('comments')->simplePaginate(6)]);
