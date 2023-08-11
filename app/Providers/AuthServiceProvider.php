@@ -24,6 +24,11 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        //camp auth
+        Gate::define('camps.update', CommentPolicy::class, 'update');
+        Gate::define('camps.delete', CommentPolicy::class, 'delete');
+        
+        //comments auth
         Gate::define('comments.update', CommentPolicy::class, 'update');
         Gate::define('comments.delete', CommentPolicy::class, 'delete');
     }
