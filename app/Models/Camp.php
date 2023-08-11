@@ -35,4 +35,12 @@ class Camp extends Model
     {
         return $this->hasMany('App\Models\Comment');
     }
+
+    public static function booted(): void
+    {
+        //this is for deleting comments(foreign key)
+        static::deleting(function (Camp $camp){
+            $camp->comments()->delete();
+        });
+    }
 }

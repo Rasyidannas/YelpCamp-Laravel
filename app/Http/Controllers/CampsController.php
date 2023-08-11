@@ -22,14 +22,37 @@ class CampsController extends Controller
      */
     public function index(Request $request)
     {
-        //default with Eager Loading
-        $query = Camp::latest()->with('comments');
+        $query = Camp::query();
 
         //for search form
         $search = $request->input('search');
         
         if ($search) {
             $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        //sort by
+        $sort = $request->input('sort');
+        
+        //this is for default no sort
+        if($sort === 'newest' || !isset($sort)) {
+            $query->orderBy('created_at', 'desc');
+        }
+
+        if($sort === 'oldest') {
+            $query->orderBy('created_at', 'asc');
+        }
+
+        if($sort === 'lower_price'){
+            $query->orderBy('price', 'asc');
+        }
+
+        if($sort === 'higher_price'){
+            $query->orderBy('price', 'desc');
+        }
+
+        if($sort === 'owner'){
+            $query->where('user_id', auth()->id());
         }
 
         $camps = $query->simplePaginate(6);

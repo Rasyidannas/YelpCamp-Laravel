@@ -61,7 +61,7 @@
                                         <div x-data="{ open:false }"
                                             x-on:click="open = !open"
                                             x-on:click.outside="open = false"
-                                            class=" ml-auto cursor-pointer group"
+                                            class=" relative ml-auto cursor-pointer group"
                                             >
                                             <div class="flex gap-[0.25rem] items-center">
                                                 <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
@@ -85,17 +85,21 @@
                             {{-- Comments --}}
                             <p :class="edit ? 'hidden' : '' ">{{ $comment->content }}</p>
                             {{-- Edit Comment --}}
-                            <form x-show="edit" action="{{ route('camp.comments.update', [$camp, $comment]) }}" class=" relative" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <textarea class="@error('content') border-red-500 @else border-slate-100 @enderror
-                                placeholder:text-slate-400 block w-full h-36 border bg-neutral-100 rounded-[.25rem] py-1 px-1 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
-                                " id="description" placeholder="This way probably the best camp i've visited this past year, definitely recommend visiting any time soon." type="text" name="content">{{ old('content', optional($comment ?? null)->content) }}</textarea>
-                                <div class="absolute bottom-1 left-1 flex gap-1">
-                                    <button x-on:click="edit = false" type="button" class=" btn btn--small btn--small-secondary text-black">cancel</button>
-                                    <button type="submit" class=" btn btn--small bg-black text-white">Save</button>
-                                </div>
-                            </form>
+                            @auth
+                                @can('update', $comment)
+                                    <form x-show="edit" action="{{ route('camp.comments.update', [$camp, $comment]) }}" class=" relative" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <textarea class="@error('content') border-red-500 @else border-slate-100 @enderror
+                                        placeholder:text-slate-400 block w-full h-36 border bg-neutral-100 rounded-[.25rem] py-1 px-1 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
+                                        " id="description" placeholder="This way probably the best camp i've visited this past year, definitely recommend visiting any time soon." type="text" name="content">{{ old('content', optional($comment ?? null)->content) }}</textarea>
+                                        <div class="absolute bottom-1 left-1 flex gap-1">
+                                            <button x-on:click="edit = false" type="button" class=" btn btn--small btn--small-secondary text-black">cancel</button>
+                                            <button type="submit" class=" btn btn--small bg-black text-white">Save</button>
+                                        </div>
+                                    </form>
+                                @endcan
+                            @endauth
                         </div>
                     @empty
                         <p class=" font-medium text-neutral-500">No Comments yet!</p>
