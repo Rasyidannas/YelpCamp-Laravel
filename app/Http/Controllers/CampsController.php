@@ -20,9 +20,16 @@ class CampsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('camps.index', ['camps' => Camp::latest()->with('comments')->simplePaginate(6)]);
+        $search = $request->input('search');
+        
+        $camps = Camp::when($search, function($query, $search) {
+            return $query->where('name', 'like', '%' . $search . '%');
+        })->simplePaginate(6);
+
+        return view('camps.index', compact('camps'));
+        // return view('camps.index', ['camps' => Camp::latest()->with('comments')->simplePaginate(6)]);
     }
 
     /**

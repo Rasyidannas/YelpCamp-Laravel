@@ -10,12 +10,13 @@
                 <p>View our hand-picked campgrounds from all over the world, or add your own.</p>
             </div>
     
-            <form action="#" class=" flex gap-1">
+            {{-- Search form --}}
+            <form action="{{ route('camps.index') }}" method="GET" class=" flex gap-1">
                 <label class="relative block">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-1">
                       <img src={{ Vite::asset('resources/assets/SearchIcon.svg') }}>
                     </span>
-                    <input class="placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-[.25rem] py-1 pl-10 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Search for camps" type="text" name="search"/>
+                    <input class="placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-[.25rem] py-1 pl-10 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Search for name camp" type="text" name="search"/>
                 </label>
                 <button type="submit" class="btn btn--medium border text-center bg-black text-white w-fit">Search</button>
             </form>
