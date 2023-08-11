@@ -24,6 +24,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Gate::define('comments.update', CommentPolicy::class, 'update');
         Gate::define('comments.delete', CommentPolicy::class, 'delete');
     }
 }

@@ -39,34 +39,51 @@
                 <div class=" flex flex-col gap-6">
                     <h1 class=" text-heading-4">Comments</h1>
                     @forelse ($camp->comments as $comment)
-                        <div class=" flex flex-col gap-1/2">
+                        <div x-data="{ edit:false }"
+                         class=" flex flex-col gap-1/2">
                             <div class="relative flex gap-1">
                                 <p class=" text-btn text-black font-bold">{{ $comment->user->name }}</p>
                                 <p class=" text-btn">{{ $comment->created_at->diffForHumans() }}</p>
+                                
                                 {{-- Kebab Icon --}}
-                                <div x-data="{ open:false }"
-                                    x-on:click="open = !open"
-                                    class=" ml-auto cursor-pointer group"
-                                    >
-                                    <div class="flex gap-[0.25rem] items-center">
-                                        <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
-                                        <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
-                                        <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
-                                    </div>
-                                    <div class=" absolute right-0 z-50 mt-1/2 py-1/2 bg-white shadow-md rounded flex flex-col" x-show="open">
-                                        <!-- Dropdown button -->
-                                        <a href="/" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Edit</a>
-                                        @can('delete', $comment)
+                                @canany(['update', 'delete'], $comment)    
+                                    <div x-data="{ open:false }"
+                                        x-on:click="open = !open"
+                                        x-on:click.outside="open = false"
+                                        class=" ml-auto cursor-pointer group"
+                                        >
+                                        <div class="flex gap-[0.25rem] items-center">
+                                            <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
+                                            <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
+                                            <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
+                                        </div>
+                                        <div x-show="open" class=" absolute right-0 z-50 mt-1/2 py-1/2 bg-white shadow-md rounded flex flex-col">
+                                            <!-- Dropdown Item -->
+                                            <a x-on:click="edit = !edit" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Edit</a>
                                             <form action="{{ route('camp.comments.destroy', [$camp, $comment]) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Delete</button>
                                             </form>
-                                        @endcan
+
+                                        </div>
                                     </div>
-                                </div>
+                                @endcanany
                             </div>
-                            <p>{{ $comment->content }}</p>
+                            {{-- Comments --}}
+                            <p :class="edit ? 'hidden' : '' ">{{ $comment->content }}</p>
+                            {{-- Edit Comment --}}
+                            <form x-show="edit" action="{{ route('camp.comments.update', [$camp, $comment]) }}" class=" relative" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <textarea class="@error('content') border-red-500 @else border-slate-100 @enderror
+                                placeholder:text-slate-400 block w-full h-36 border bg-neutral-100 rounded-[.25rem] py-1 px-1 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
+                                " id="description" placeholder="This way probably the best camp i've visited this past year, definitely recommend visiting any time soon." type="text" name="content">{{ old('content', optional($comment ?? null)->content) }}</textarea>
+                                <div class="absolute bottom-1 left-1 flex gap-1">
+                                    <button x-on:click="edit = false" type="button" class=" btn btn--small btn--small-secondary text-black">cancel</button>
+                                    <button type="submit" class=" btn btn--small bg-black text-white">Save</button>
+                                </div>
+                            </form>
                         </div>
                     @empty
                         <p class=" font-medium text-neutral-500">No Comments yet!</p>
@@ -75,24 +92,33 @@
 
                 <div class=" h-[1px] bg-gray-400"></div>
 
-                <div class="flex flex-col gap-1">
-                    <h5 class=" text-heading-5 font-semibold">Add New Comment</h5>
-                    <form action="{{ route('camp.comments.store', $camp) }}" method="POST" class=" flex flex-col gap-1">
-                        @csrf
-                        <div class=" w-full flex flex-col gap-1/2">
-                            <label for="content" class=" text-neutral-500">Description</label>
-                            <textarea class="@error('content') border-red-500 @else border-slate-100 @enderror
-                            placeholder:text-slate-400 block w-full h-40 border bg-neutral-100 rounded-[.25rem] py-1 px-1 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
-                            " id="description" placeholder="This way probably the best camp i've visited this past year, definitely recommend visiting any time soon." type="text" name="content">{{ old('content', optional($comment ?? null)->description) }}</textarea>
-                            @error('content')
-                                <span class=" text-small text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class=" flex gap-1">
-                            <a href="/" class=" flex-1 btn btn--medium btn--medium-secondary text-center hover:bg-black hover:text-white transition-all">Cancel</a>
-                            <button type="submit" class=" flex-1 btn btn--medium bg-black text-white">Post Comment</button>
-                        </div>
-                    </form>
+                {{-- Form Add New Comment --}}
+                <div x-data="{ open:false }" 
+                class="flex flex-col gap-2"
+                >
+                    <button x-on:click="open = !open" type="submit" class=" btn btn--medium text-center bg-black text-white flex gap-1/2 items-end justify-center self-end"> 
+                        <img src="{{ Vite::asset('resources/assets/ChatBubble.svg') }}" alt="" class=" h-6 w-6">
+                        Leave a Review
+                    </button>
+                    <div x-show="open" class=" flex flex-col gap-1">
+                        <h5 class=" text-heading-5 font-semibold">Add New Comment</h5>
+                        <form action="{{ route('camp.comments.store', $camp) }}" method="POST" class=" flex flex-col gap-1">
+                            @csrf
+                            <div class=" w-full flex flex-col gap-1/2">
+                                <label for="content" class=" text-neutral-500">Description</label>
+                                <textarea class="@error('content') border-red-500 @else border-slate-100 @enderror
+                                placeholder:text-slate-400 block w-full h-40 border bg-neutral-100 rounded-[.25rem] py-1 px-1 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
+                                " id="content" placeholder="This way probably the best camp i've visited this past year, definitely recommend visiting any time soon." type="text" name="content"></textarea>
+                                @error('content')
+                                    <span class=" text-small text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class=" flex gap-1">
+                                <a x-on:click="open = false" class=" flex-1 btn btn--medium btn--medium-secondary text-center cursor-pointer hover:bg-black hover:text-white transition-all">Cancel</a>
+                                <button type="submit" class=" flex-1 btn btn--medium bg-black text-white">Post Comment</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
