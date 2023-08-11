@@ -33,4 +33,6 @@
             </div>
         @endforelse
     </div>
+
+    {{ $camps->links() }}
 @endsection

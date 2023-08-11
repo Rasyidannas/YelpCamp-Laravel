@@ -9,27 +9,31 @@
                 <img src="{{ Vite::asset('resources/assets/Map.png') }}" alt="">
             </figure>
             {{-- Delete Camp --}}
-            @can('delete', $camp)
-                <form action="{{ route('camps.destroy', ['camp' => $camp->id]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn--medium btn--medium-secondary w-full text-center border-red-500 text-red-500 flex gap-1/2 items-end justify-center"> 
-                        <img src="{{ Vite::asset('resources/assets/TrashIcon.svg') }}" alt="" class=" h-6 w-6 text-red-500">
-                        Delete {{ $camp->name }}
-                    </button>
-                </form>
-            @endcan
+            @auth
+                @can('delete', $camp)
+                    <form action="{{ route('camps.destroy', ['camp' => $camp->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn--medium btn--medium-secondary w-full text-center border-red-500 text-red-500 flex gap-1/2 items-end justify-center"> 
+                            <img src="{{ Vite::asset('resources/assets/TrashIcon.svg') }}" alt="" class=" h-6 w-6 text-red-500">
+                            Delete {{ $camp->name }}
+                        </button>
+                    </form>
+                @endcan
+            @endauth
         </div>
 
         <div class="w-2/3 flex flex-col gap-3">
             <div class=" p-2 border border-gray-400 rounded flex flex-col gap-1">
                 <figure class="relative">
                     {{-- Edit Camp --}}
-                    @can('update', $camp)
-                        <a href="{{ route('camps.edit', $camp->slug) }}" class=" absolute top-1 right-1 btn--medium bg-white text-btn font-medium flex gap-1/2 items-end">
-                            <img src="{{ Vite::asset('resources/assets/EditIcon.svg') }}" alt="" class=" h-6 w-6"> Edit Camp
-                        </a>
-                    @endcan
+                    @auth
+                        @can('update', $camp)
+                            <a href="{{ route('camps.edit', $camp->slug) }}" class=" absolute top-1 right-1 btn--medium bg-white text-btn font-medium flex gap-1/2 items-end">
+                                <img src="{{ Vite::asset('resources/assets/EditIcon.svg') }}" alt="" class=" h-6 w-6"> Edit Camp
+                            </a>
+                        @endcan
+                    @endauth
                     <img src="{{ $camp->images }}" alt="{{ $camp->name }}" class="rounded w-full">
                 </figure>
                 <div class="flex items-center justify-between">
@@ -52,29 +56,31 @@
                                 <p class=" text-btn">{{ $comment->created_at->diffForHumans() }}</p>
                                 
                                 {{-- Kebab Icon --}}
-                                @canany(['update', 'delete'], $comment)    
-                                    <div x-data="{ open:false }"
-                                        x-on:click="open = !open"
-                                        x-on:click.outside="open = false"
-                                        class=" ml-auto cursor-pointer group"
-                                        >
-                                        <div class="flex gap-[0.25rem] items-center">
-                                            <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
-                                            <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
-                                            <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
-                                        </div>
-                                        <div x-show="open" class=" absolute right-0 z-50 mt-1/2 py-1/2 bg-white shadow-md rounded flex flex-col">
-                                            <!-- Dropdown Item -->
-                                            <a x-on:click="edit = !edit" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Edit</a>
-                                            <form action="{{ route('camp.comments.destroy', [$camp, $comment]) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Delete</button>
-                                            </form>
+                                @auth
+                                    @canany(['update', 'delete'], $comment)    
+                                        <div x-data="{ open:false }"
+                                            x-on:click="open = !open"
+                                            x-on:click.outside="open = false"
+                                            class=" ml-auto cursor-pointer group"
+                                            >
+                                            <div class="flex gap-[0.25rem] items-center">
+                                                <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
+                                                <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
+                                                <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
+                                            </div>
+                                            <div x-show="open" class=" absolute right-0 z-50 mt-1/2 py-1/2 bg-white shadow-md rounded flex flex-col">
+                                                <!-- Dropdown Item -->
+                                                <a x-on:click="edit = !edit" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Edit</a>
+                                                <form action="{{ route('camp.comments.destroy', [$camp, $comment]) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Delete</button>
+                                                </form>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                @endcanany
+                                    @endcanany
+                                @endauth
                             </div>
                             {{-- Comments --}}
                             <p :class="edit ? 'hidden' : '' ">{{ $comment->content }}</p>
