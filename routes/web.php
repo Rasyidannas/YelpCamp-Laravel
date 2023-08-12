@@ -26,6 +26,5 @@ Route::get('camps/{camp:slug}', [CampsController::class, 'show'])->name('camps.s
 Route::get('camps/{camp:slug}/edit', [CampsController::class, 'edit'])->name('camps.edit');
 
 Route::resource('camp.comments', CommentController::class)->only(['store', 'update', 'destroy']);
-
 // For authentication
 Auth::routes();

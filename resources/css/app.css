@@ -771,6 +771,10 @@ ul{
   display: block;
 }
 
+.inline-block{
+  display: inline-block;
+}
+
 .flex{
   display: flex;
 }
@@ -856,6 +860,10 @@ ul{
   width: 80%;
 }
 
+.w-48{
+  width: 12rem;
+}
+
 .w-5{
   width: 1.25rem;
 }
@@ -879,18 +887,6 @@ ul{
 
 .w-full{
   width: 100%;
-}
-
-.w-32{
-  width: 8rem;
-}
-
-.w-96{
-  width: 24rem;
-}
-
-.w-48{
-  width: 12rem;
 }
 
 .flex-1{
@@ -928,6 +924,10 @@ ul{
 
 .justify-start{
   justify-content: flex-start;
+}
+
+.justify-end{
+  justify-content: flex-end;
 }
 
 .justify-center{

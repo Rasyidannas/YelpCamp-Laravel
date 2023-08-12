@@ -58,7 +58,6 @@ class CampsController extends Controller
         $camps = $query->simplePaginate(6);
 
         return view('camps.index', compact('camps'));
-        // return view('camps.index', ['camps' => Camp::latest()->with('comments')->simplePaginate(6)]);
     }
 
     /**

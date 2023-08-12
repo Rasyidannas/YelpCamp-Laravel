@@ -62,5 +62,7 @@
         @endforelse
     </div>
 
-    {{ $camps->links() }}
+    <div class="mt-2 flex justify-end">
+        {{ $camps->appends(request()->query())->links() }}
+    </div>
 @endsection
