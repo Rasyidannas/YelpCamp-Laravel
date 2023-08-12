@@ -11,7 +11,7 @@
     }
 
     body{
-        @apply font-sans px-20;
+        @apply font-sans px-12 lg:px-20;
     }
 
     h1{
@@ -42,9 +42,15 @@
         list-style: none;
     }
 
-    @media (min-width: 1024px){
+    @media (max-width: 1024px){
         html{
             font-size: 80%;
+        }
+    }
+
+    @media (max-width: 640px){
+        html{
+            font-size: 75%;
         }
     }
 }
@@ -72,6 +78,18 @@
 
     .card__camp{
         flex: 0 0 calc(33% - 1rem);
+    }
+
+    @media (max-width: 768px) {
+        .card__camp{
+            flex: 0 0 calc(50% - 1rem);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .card__camp{
+            flex: 0 0 100%;
+        }
     }
 }
 

@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class="container">
-        <div class=" flex">
-            <div>
+        <div class=" flex flex-col lg:flex-row">
+            <div class=" flex flex-col gap-3">
                 <nav class="pt-2">
                     <figure>
                         <a href="/">
@@ -18,8 +18,10 @@
                         </a>
                     </figure>
                 </nav>
-    
-                <div class="flex flex-col gap-2 pt-20">
+                <figure class=" relative w-full block lg:hidden">
+                    <img src={{ Vite::asset('resources/assets/HeroImageTab.jpg') }} alt="Yelp Camp">
+                </figure>
+                <div class="flex flex-col gap-2 lg:pt-20">
                     <div class=" w-4/5 flex flex-col gap-[1.5rem]">
                         <h1 class=" text-neutral-900">Explore the best camps on Earth.</h1>
                         <p>YelpCamp is a curated list of the best camping spots on Earth. Unfiltered and unbiased reviews.</p>
@@ -57,8 +59,8 @@
                 </div>
             </div>
     
-            <figure class=" relative -right-20 w-2/4">
-                <img src={{ Vite::asset('resources/assets/HeroImage.jpg') }} alt="Yelp Camp">
+            <figure class=" relative -right-20 w-2/4 hidden lg:block">
+                <img src={{ Vite::asset('resources/assets/HeroImage.jpg') }} alt="Yelp Camp" class=" h-full">
             </figure>
         </div>
     </div>

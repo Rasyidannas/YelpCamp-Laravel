@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <div class=" flex">
+        <div class=" flex flex-col lg:flex-row">
             <div class=" pb-4">
                 <nav class="pt-2 flex items-center justify-between">
                     <figure>
@@ -22,7 +22,7 @@
                 </nav>
     
                 <div class="flex flex-col gap-2 pt-20">
-                    <div class=" w-4/5 flex flex-col gap-2">
+                    <div class=" w-full sm:w-4/5 flex flex-col gap-2">
                         <h1 class=" text-neutral-900">Start Exploring camps from all around the world.</h1>
 
                         <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-2">
@@ -56,7 +56,7 @@
                 </div>
             </div>
     
-            <div class=" relative -right-20 w-2/4 bg-stone-100 p-4 flex flex-col justify-center gap-2">
+            <div class=" relative lg:-right-20 lg:w-2/4 bg-stone-100 p-4 flex flex-col justify-center gap-2">
                 <h4 class=" font-semibold tracking-wide leading-normal"> &quot;YelpCamp has honestly saved me hours of research time and the camps on here are definitely well picked and added.&quot;</h4>
                 <div class=" flex gap-1">
                     <figure><img src="{{ Vite::asset('resources/assets/UserTestimonial.svg') }}" alt=""></figure>

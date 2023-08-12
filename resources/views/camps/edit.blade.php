@@ -3,7 +3,7 @@
 @section('title', $camp->name)
 
 @section('content')
-    <div class=" flex flex-col gap-3 w-7/12 mx-auto">
+    <div class=" flex flex-col gap-3 w-full sm:w-7/12 mx-auto">
         <h2 class=" font-bold">Edit {{ $camp->name }}</h2>
         
         <form action="{{ route('camps.update', ['camp' => $camp->id]) }}" method="POST" class="flex flex-col gap-2">

@@ -3,10 +3,10 @@
 @section('title', $camp->name)
 
 @section('content')
-    <div class="flex justify-between gap-6">
+    <div class="flex flex-col-reverse sm:flex-row justify-between gap-6">
         <div class="h-fit flex-1 flex flex-col gap-2">
             <figure class=" p-2 border rounded border-gray-400">
-                <img src="{{ Vite::asset('resources/assets/Map.png') }}" alt="">
+                <img src="{{ Vite::asset('resources/assets/Map.png') }}" alt="" class="w-full">
             </figure>
             {{-- Delete Camp --}}
             @auth
@@ -23,7 +23,7 @@
             @endauth
         </div>
 
-        <div class="w-2/3 flex flex-col gap-3">
+        <div class="w-full sm:w-2/3 flex flex-col gap-3">
             <div class=" p-2 border border-gray-400 rounded flex flex-col gap-1">
                 <figure class="relative">
                     {{-- Edit Camp --}}
