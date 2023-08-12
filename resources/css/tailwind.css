@@ -41,6 +41,12 @@
     ul{
         list-style: none;
     }
+
+    @media (min-width: 1024px){
+        html{
+            font-size: 80%;
+        }
+    }
 }
 
 @layer components {

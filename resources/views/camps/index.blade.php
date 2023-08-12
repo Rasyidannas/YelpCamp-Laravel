@@ -32,25 +32,23 @@
                 Sort by
                 <svg height="1rem" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" fill="currentColor" viewBox="0 0 512 512" width="1rem" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><polygon points="396.6,160 416,180.7 256,352 96,180.7 115.3,160 256,310.5 "/></svg>
             </button>
-            <template x-if="true">
-                <ul x-show="open" class=" absolute right-0 z-50 w-48 mt-1/2 py-1/2 bg-white shadow-md rounded flex flex-col">
-                    <li>
-                        <a href="{{ route('camps.index', ['sort' => 'oldest']) }}" class="w-full btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Oldest to newest</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('camps.index', ['sort' => 'newest']) }}" class="w-full btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Newest to oldest</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('camps.index', ['sort' => 'lower_price']) }}" class="w-full btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Lower price to higher price</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('camps.index', ['sort' => 'higher_price']) }}" class="w-full btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Higher price to lower price</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('camps.index', ['sort' => 'owner']) }}" class="w-full btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Owner</a>
-                    </li>
-                </ul>
-            </template>
+            <ul x-cloak x-show="open" class=" absolute right-0 z-50 w-48 mt-1/2 py-1/2 bg-white shadow-md rounded flex flex-col">
+                <li>
+                    <a href="{{ route('camps.index', ['sort' => 'oldest']) }}" class="w-full btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Oldest to newest</a>
+                </li>
+                <li>
+                    <a href="{{ route('camps.index', ['sort' => 'newest']) }}" class="w-full btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Newest to oldest</a>
+                </li>
+                <li>
+                    <a href="{{ route('camps.index', ['sort' => 'lower_price']) }}" class="w-full btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Lower price to higher price</a>
+                </li>
+                <li>
+                    <a href="{{ route('camps.index', ['sort' => 'higher_price']) }}" class="w-full btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Higher price to lower price</a>
+                </li>
+                <li>
+                    <a href="{{ route('camps.index', ['sort' => 'owner']) }}" class="w-full btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Owner</a>
+                </li>
+            </ul>
         </div>
     </div>
 

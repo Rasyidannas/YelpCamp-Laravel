@@ -483,6 +483,12 @@ ul{
   list-style: none;
 }
 
+@media (min-width: 1024px){
+  html{
+    font-size: 80%;
+  }
+}
+
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;

@@ -69,18 +69,17 @@
                                                 <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
                                                 <div class=" w-1.5 h-1.5 bg-slate-400 rounded-1 group-hover:bg-slate-950 transition-all"></div>
                                             </div>
-                                            <template x-if="true">
-                                                <div x-show="open" class=" absolute right-0 z-50 mt-1/2 py-1/2 bg-white shadow-md rounded flex flex-col">
-                                                    <!-- Dropdown Item -->
-                                                    <a x-on:click="edit = !edit" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Edit</a>
-                                                    <form action="{{ route('camp.comments.destroy', [$camp, $comment]) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Delete</button>
-                                                    </form>
-    
-                                                </div>
-                                            </template>
+                                        
+                                            <div x-cloak x-show="open" class=" absolute right-0 z-50 mt-1/2 py-1/2 bg-white shadow-md rounded flex flex-col">
+                                                <!-- Dropdown Item -->
+                                                <a x-on:click="edit = !edit" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Edit</a>
+                                                <form action="{{ route('camp.comments.destroy', [$camp, $comment]) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class=" btn btn--small font-normal text-neutral-500 hover:text-neutral-950 hover:bg-slate-100 transition-all">Delete</button>
+                                                </form>
+
+                                            </div>
                                         </div>
                                     @endcanany
                                 @endauth
@@ -90,8 +89,7 @@
                             {{-- Edit Comment --}}
                             @auth
                                 @can('update', $comment)
-                                <template x-if="true">
-                                    <form x-show="edit" action="{{ route('camp.comments.update', [$camp, $comment]) }}" class=" relative" method="POST">
+                                    <form x-cloak x-show="edit" action="{{ route('camp.comments.update', [$camp, $comment]) }}" class=" relative" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <textarea class="@error('content') border-red-500 @else border-slate-100 @enderror
@@ -102,7 +100,6 @@
                                             <button type="submit" class=" btn btn--small bg-black text-white">Save</button>
                                         </div>
                                     </form>
-                                </template>
                                 @endcan
                             @endauth
                         </div>
@@ -121,27 +118,25 @@
                         <img src="{{ Vite::asset('resources/assets/ChatBubble.svg') }}" alt="" class=" h-6 w-6">
                         Leave a Review
                     </button>
-                    <template x-if="true">
-                        <div x-show="open" class=" flex flex-col gap-1">
-                            <h5 class=" text-heading-5 font-semibold">Add New Comment</h5>
-                            <form action="{{ route('camp.comments.store', $camp) }}" method="POST" class=" flex flex-col gap-1">
-                                @csrf
-                                <div class=" w-full flex flex-col gap-1/2">
-                                    <label for="content" class=" text-neutral-500">Description</label>
-                                    <textarea class="@error('content') border-red-500 @else border-slate-100 @enderror
-                                    placeholder:text-slate-400 block w-full h-40 border bg-neutral-100 rounded-[.25rem] py-1 px-1 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
-                                    " id="content" placeholder="This way probably the best camp i've visited this past year, definitely recommend visiting any time soon." type="text" name="content"></textarea>
-                                    @error('content')
-                                        <span class=" text-small text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class=" flex gap-1">
-                                    <a x-on:click="open = false" class=" flex-1 btn btn--medium btn--medium-secondary text-center cursor-pointer hover:bg-black hover:text-white transition-all">Cancel</a>
-                                    <button type="submit" class=" flex-1 btn btn--medium bg-black text-white">Post Comment</button>
-                                </div>
-                            </form>
-                        </div>
-                    </template>
+                    <div x-cloak x-show="open" class=" flex flex-col gap-1">
+                        <h5 class=" text-heading-5 font-semibold">Add New Comment</h5>
+                        <form action="{{ route('camp.comments.store', $camp) }}" method="POST" class=" flex flex-col gap-1">
+                            @csrf
+                            <div class=" w-full flex flex-col gap-1/2">
+                                <label for="content" class=" text-neutral-500">Description</label>
+                                <textarea class="@error('content') border-red-500 @else border-slate-100 @enderror
+                                placeholder:text-slate-400 block w-full h-40 border bg-neutral-100 rounded-[.25rem] py-1 px-1 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
+                                " id="content" placeholder="This way probably the best camp i've visited this past year, definitely recommend visiting any time soon." type="text" name="content"></textarea>
+                                @error('content')
+                                    <span class=" text-small text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class=" flex gap-1">
+                                <a x-on:click="open = false" class=" flex-1 btn btn--medium btn--medium-secondary text-center cursor-pointer hover:bg-black hover:text-white transition-all">Cancel</a>
+                                <button type="submit" class=" flex-1 btn btn--medium bg-black text-white">Post Comment</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
