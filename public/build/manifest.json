@@ -1,0 +1,132 @@
+{
+  "resources/assets/Airbnb.svg": {
+    "file": "assets/Airbnb-ccc273ae.svg",
+    "src": "resources/assets/Airbnb.svg"
+  },
+  "resources/assets/Booking.svg": {
+    "file": "assets/Booking-2a61cafd.svg",
+    "src": "resources/assets/Booking.svg"
+  },
+  "resources/assets/Camp Images/Compressed Images/Buloy Springs.jpg": {
+    "file": "assets/Buloy Springs-307dd6d4.jpg",
+    "src": "resources/assets/Camp Images/Compressed Images/Buloy Springs.jpg"
+  },
+  "resources/assets/Camp Images/Compressed Images/Calaguas Island.jpg": {
+    "file": "assets/Calaguas Island-a6196a9b.jpg",
+    "src": "resources/assets/Camp Images/Compressed Images/Calaguas Island.jpg"
+  },
+  "resources/assets/Camp Images/Compressed Images/Latik Riverside.jpg": {
+    "file": "assets/Latik Riverside-7e9e11f5.jpg",
+    "src": "resources/assets/Camp Images/Compressed Images/Latik Riverside.jpg"
+  },
+  "resources/assets/Camp Images/Compressed Images/Mount Ulap.jpg": {
+    "file": "assets/Mount Ulap-a66abe7b.jpg",
+    "src": "resources/assets/Camp Images/Compressed Images/Mount Ulap.jpg"
+  },
+  "resources/assets/Camp Images/Compressed Images/Onay Beach.jpg": {
+    "file": "assets/Onay Beach-2be9bdbb.jpg",
+    "src": "resources/assets/Camp Images/Compressed Images/Onay Beach.jpg"
+  },
+  "resources/assets/Camp Images/Compressed Images/Seven Sisters Waterfall.jpg": {
+    "file": "assets/Seven Sisters Waterfall-9493cb27.jpg",
+    "src": "resources/assets/Camp Images/Compressed Images/Seven Sisters Waterfall.jpg"
+  },
+  "resources/assets/Camp Images/High Quality Images/Buloy Springs.jpg": {
+    "file": "assets/Buloy Springs-cf514c6d.jpg",
+    "src": "resources/assets/Camp Images/High Quality Images/Buloy Springs.jpg"
+  },
+  "resources/assets/Camp Images/High Quality Images/Calagus Islands.jpg": {
+    "file": "assets/Calagus Islands-c52152b3.jpg",
+    "src": "resources/assets/Camp Images/High Quality Images/Seven Sisters Waterfall.jpg"
+  },
+  "resources/assets/Camp Images/High Quality Images/Latik Riverside.jpg": {
+    "file": "assets/Latik Riverside-a32ed8ed.jpg",
+    "src": "resources/assets/Camp Images/High Quality Images/Latik Riverside.jpg"
+  },
+  "resources/assets/Camp Images/High Quality Images/Mount Ulap.png": {
+    "file": "assets/Mount Ulap-469ae854.png",
+    "src": "resources/assets/Camp Images/High Quality Images/Mount Ulap.png"
+  },
+  "resources/assets/Camp Images/High Quality Images/Onay Beach.jpg": {
+    "file": "assets/Onay Beach-92c5c0e4.jpg",
+    "src": "resources/assets/Camp Images/High Quality Images/Onay Beach.jpg"
+  },
+  "resources/assets/Camp Images/High Quality Images/Seven Sisters Waterfall.jpg": {
+    "file": "assets/Calagus Islands-c52152b3.jpg",
+    "src": "resources/assets/Camp Images/High Quality Images/Seven Sisters Waterfall.jpg"
+  },
+  "resources/assets/ChatBubble.svg": {
+    "file": "assets/ChatBubble-428f3d29.svg",
+    "src": "resources/assets/ChatBubble.svg"
+  },
+  "resources/assets/Checkmark.svg": {
+    "file": "assets/Checkmark-d1634e77.svg",
+    "src": "resources/assets/Checkmark.svg"
+  },
+  "resources/assets/Close.svg": {
+    "file": "assets/Close-fa2eb6d5.svg",
+    "src": "resources/assets/Close.svg"
+  },
+  "resources/assets/DownArrow.svg": {
+    "file": "assets/DownArrow-1a5d8a0d.svg",
+    "src": "resources/assets/DownArrow.svg"
+  },
+  "resources/assets/EditIcon.svg": {
+    "file": "assets/EditIcon-b9ef5c55.svg",
+    "src": "resources/assets/EditIcon.svg"
+  },
+  "resources/assets/HamburgerMenu.svg": {
+    "file": "assets/HamburgerMenu-da5f924f.svg",
+    "src": "resources/assets/HamburgerMenu.svg"
+  },
+  "resources/assets/HeroImage.jpg": {
+    "file": "assets/HeroImage-86b1cbc1.jpg",
+    "src": "resources/assets/HeroImage.jpg"
+  },
+  "resources/assets/HeroImageTab.jpg": {
+    "file": "assets/HeroImageTab-dc745d88.jpg",
+    "src": "resources/assets/HeroImageTab.jpg"
+  },
+  "resources/assets/HiddenIcon.svg": {
+    "file": "assets/HiddenIcon-fe2e1e5f.svg",
+    "src": "resources/assets/HiddenIcon.svg"
+  },
+  "resources/assets/Logo.svg": {
+    "file": "assets/Logo-0740752f.svg",
+    "src": "resources/assets/Logo.svg"
+  },
+  "resources/assets/Map.png": {
+    "file": "assets/Map-2462763c.png",
+    "src": "resources/assets/Map.png"
+  },
+  "resources/assets/PlumGuide.svg": {
+    "file": "assets/PlumGuide-67d37e6d.svg",
+    "src": "resources/assets/PlumGuide.svg"
+  },
+  "resources/assets/SearchIcon.svg": {
+    "file": "assets/SearchIcon-a999b2ee.svg",
+    "src": "resources/assets/SearchIcon.svg"
+  },
+  "resources/assets/ShowIcon.svg": {
+    "file": "assets/ShowIcon-e2a55673.svg",
+    "src": "resources/assets/ShowIcon.svg"
+  },
+  "resources/assets/TrashIcon.svg": {
+    "file": "assets/TrashIcon-56995a19.svg",
+    "src": "resources/assets/TrashIcon.svg"
+  },
+  "resources/assets/UserTestimonial.svg": {
+    "file": "assets/UserTestimonial-5e21e4fd.svg",
+    "src": "resources/assets/UserTestimonial.svg"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-64c78e7d.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-69332da4.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}
