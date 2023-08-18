@@ -19,4 +19,4 @@ echo "Running migrations..."
 php artisan migrate --force
 
 echo "Running migrations fresh"
-php artisan migrate:fresh
+php artisan migrate:fresh --force
