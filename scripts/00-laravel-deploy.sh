@@ -9,6 +9,9 @@ php artisan key:generate --show
 echo "Caching config..."
 php artisan config:cache
 
+echo "Route lists..."
+php artisan route:list
+
 echo "Caching routes..."
 php artisan route:cache
 
