@@ -17,3 +17,6 @@ php artisan route:cache
 
 echo "Running migrations..."
 php artisan migrate --force
+
+echo "Running migrations fresh"
+php artisan migrate:fresh
