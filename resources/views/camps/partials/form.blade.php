@@ -1,10 +1,10 @@
 <div class=" flex flex-col gap-6">
     {{-- Name Field --}}
-    <x-form.inputText label="Name" name="name" type="text" placeholder="Seven Sister Waterfall" :model="$camp ?? null"/>
+    <x-form.input_text label="Name" name="name" type="text" placeholder="Seven Sister Waterfall" :model="$camp ?? null"/>
     {{-- Price Field --}}
-    <x-form.inputText label="Price" name="price" type="text" placeholder="$149" :model="$camp ?? null"/>
+    <x-form.input_text label="Price" name="price" type="text" placeholder="$149" :model="$camp ?? null"/>
     {{-- Image Field --}}
-    <x-form.inputText label="Image" name="images" type="text" placeholder="https://images.unsplash.com/" :model="$camp ?? null"/>
+    <x-form.input_text label="Image" name="images" type="text" placeholder="https://images.unsplash.com/" :model="$camp ?? null"/>
     {{-- Description Field --}}
     <div class=" flex flex-col gap-1/2">
         <label for="description" class=" text-neutral-500">Description</label>

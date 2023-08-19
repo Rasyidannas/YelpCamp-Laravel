@@ -27,7 +27,7 @@
 
                         <form method="POST" action="{{ route('login') }}" class="flex flex-col gap-2">
                             @csrf
-                            <x-form.inputText label="Email" name="email" type="text" placeholder="Johndoe@example.com" :model="$camp ?? null"/>
+                            <x-form.input_text label="Email" name="email" type="text" placeholder="Johndoe@example.com" :model="$camp ?? null"/>
                             {{-- Password field --}}
                             <div class="flex flex-col gap-1/2">
                                 <label for="password" class="text-neutral-500">Password</label>
