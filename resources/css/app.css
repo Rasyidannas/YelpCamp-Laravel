@@ -810,6 +810,10 @@ ul{
   margin-top: 2rem;
 }
 
+.mb-2{
+  margin-bottom: 2rem;
+}
+
 .mb-1{
   margin-bottom: 1rem;
 }
@@ -984,6 +988,10 @@ ul{
   gap: .5rem;
 }
 
+.gap-16{
+  gap: 4rem;
+}
+
 .gap-2{
   gap: 2rem;
 }
@@ -1002,14 +1010,6 @@ ul{
 
 .gap-\[1\.5rem\]{
   gap: 1.5rem;
-}
-
-.gap-10{
-  gap: 2.5rem;
-}
-
-.gap-16{
-  gap: 4rem;
 }
 
 .self-start{
@@ -1526,9 +1526,5 @@ ul{
 
   .lg\:flex-row{
     flex-direction: row;
-  }
-
-  .lg\:pt-20{
-    padding-top: 5rem;
   }
 }
