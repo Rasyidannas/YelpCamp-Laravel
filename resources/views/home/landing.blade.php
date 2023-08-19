@@ -10,9 +10,9 @@
 <body>
     <div class="container">
         <div class=" flex flex-col lg:flex-row">
-            <div class=" flex flex-col gap-3">
+            <div class=" flex flex-col gap-16">
                 <nav class="pt-2">
-                    <figure>
+                    <figure class=" inline-block">
                         <a href="/">
                             <img src={{ Vite::asset('resources/assets/Logo.svg') }} alt="Yelp Camp">
                         </a>
@@ -21,7 +21,7 @@
                 <figure class=" relative w-full block lg:hidden">
                     <img src={{ Vite::asset('resources/assets/HeroImageTab.jpg') }} alt="Yelp Camp">
                 </figure>
-                <div class="flex flex-col gap-2 lg:pt-20">
+                <div class="flex flex-col gap-2">
                     <div class=" w-4/5 flex flex-col gap-[1.5rem]">
                         <h1 class=" text-neutral-900">Explore the best camps on Earth.</h1>
                         <p>YelpCamp is a curated list of the best camping spots on Earth. Unfiltered and unbiased reviews.</p>
