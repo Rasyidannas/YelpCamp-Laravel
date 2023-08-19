@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class=" flex flex-col lg:flex-row">
-            <div class=" flex flex-col gap-16">
+            <div class=" flex flex-col gap-16 mb-3">
                 <nav class="pt-2">
                     <figure class=" inline-block">
                         <a href="/">
